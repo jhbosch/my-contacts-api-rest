@@ -17,7 +17,7 @@ router.post('/new', async (req, res) => {
 
 		res.status(200).json(cont);
 	} catch (err) {
-		res.status(400).send({ error: 'Something went wrong' });
+		res.status(400).send({ error: 'Something went wrong',msg:err });
 	}
 });
 
@@ -46,7 +46,7 @@ router.get('/all', async (_req, res) => {
 		}
 		res.status(200).json(contacts);
 	} catch (err) {
-		res.status(400).json({ error: err });
+		res.status(400).json({ error: 'Unable to find contacts',msg: err });
 	}
 });
 
@@ -61,7 +61,7 @@ router.get('/:id', async (req, res) => {
 		const contact = await Contact.findOne({ _id: id });
 		res.status(200).json(contact);
 	} catch (err) {
-		res.status(400).json({ error: 'Unable to find that post' });
+		res.status(400).json({ error: 'Unable to find that contact',msg: err });
 	}
 });
 
@@ -78,12 +78,12 @@ router.delete('/:id', async (req, res) => {
 		});
 
 		if (!contact) {
-			return res.status(400).json({ error: 'Unable to delete that post' });
+			return res.status(400).json({ error: 'Unable to delete that contact' });
 		}
 
-		res.status(200).json({ msg: 'Post has been removed successfully!' });
+		res.status(200).json({ msg: 'Contact has been removed successfully!' });
 	} catch (err) {
-		res.status(400).send({ error: 'Something went wrong' });
+		res.status(400).send({ error: 'Something went wrong',msg: err });
 	}
 });
 
@@ -104,12 +104,12 @@ router.patch('/:id', async (req, res) => {
 		);
 
 		if (!contact) {
-			return res.status(404).json({ error: 'Unable to update that post' });
+			return res.status(404).json({ error: 'Unable to update that contact' });
 		}
 
 		res.status(200).json(contact);
 	} catch (err) {
-		res.status(400).send({ error: 'Something went wrong' });
+		res.status(400).send({ error: 'Something went wrong',msg: err });
 	}
 });
 

@@ -73,7 +73,7 @@ GET /api/contact/:id
 DELETE /api/contact/:id
     // Delete Contact by ID
 
-PATCH /api/post/:id
+PATCH /api/contact/:id
     // Update a Contact
 ```
 

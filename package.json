@@ -8,7 +8,7 @@
     "dev": "nodemon index.js",
     "test": "mocha  --debug-brk  --recursive --timeout 15000 --exit",
     "database": "~/mongo/bin/mongod --dbpath ~/mongo-data",
-    "seed": "node ./test/mock_data/index.js"
+    "seed": "node ./db/mock_data/index.js"
   },
   "author": "jhbosch",
   "license": "MIT",

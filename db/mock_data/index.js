@@ -8,7 +8,7 @@ const config = {
 };
 const seeder = new Seeder(config);
 const collections = seeder.readCollectionsFromPath(
-  path.resolve('./test/mock_data/data')
+  path.resolve('./db/mock_data/data')
 );
 
 seeder

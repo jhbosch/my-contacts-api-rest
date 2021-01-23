@@ -2,21 +2,16 @@ const mongoose = require('mongoose');
 const { DB } = require('../config/config.js');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
-const mongod = new MongoMemoryServer({instance: {dbPath:"C:\\data\\db"}});
+const mongod = new MongoMemoryServer();
 
 function connect() {
   return new Promise((resolve, reject) => {
 
     if (process.env.NODE_ENV === 'test') {
-      
-
       const mongooseOpts = {
           useNewUrlParser: true,
-          //autoReconnect: true,
           useUnifiedTopology: true,
-          //reconnectTries: Number.MAX_VALUE,
-          //reconnectInterval: 10000,
-          //useMongoClient: true, // remove this line if you use mongoose 5 and above
+          useFindAndModify: false,
       };
       
       mongod.getUri().then((uri) => {
